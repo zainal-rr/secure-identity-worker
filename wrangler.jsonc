@@ -5,6 +5,12 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "secure-identity-worker",
+	"routes": [
+  {
+    "pattern": "tunnel.labsoft.uk/secure*",
+    "zone_name": "labsoft.uk"
+  }
+],
 	"main": "src/index.ts",
 	"compatibility_date": "2026-03-10",
 	"compatibility_flags": [
@@ -18,7 +24,13 @@
 	"observability": {
 		"enabled": true
 	},
-	"upload_source_maps": true
+	"upload_source_maps": true,
+	"r2_buckets": [
+		{
+			"bucket_name": "flag-assets",
+			"binding": "flag_assets"
+		}
+	]
 	/**
 	 * Smart Placement
 	 * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
